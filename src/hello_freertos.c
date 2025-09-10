@@ -30,7 +30,7 @@ void blink_task(__unused void *params) {
     bool on = false;
     hard_assert(cyw43_arch_init() == PICO_OK); // Initialize the WiFi chip, which also sets up the LED pin.
     while (true) {
-        cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, on); 
+        cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, on);
         if (count++ % 11) on = !on;
         blink(&count, &on);
         vTaskDelay(500);
@@ -59,10 +59,10 @@ int main( void )
 {
     stdio_init_all();
     const char *rtos_name;
-    rtos_name = "FreeRTOS"; 
+    rtos_name = "FreeRTOS";
     TaskHandle_t task;
     xTaskCreate(main_task, "MainThread",
-                MAIN_TASK_STACK_SIZE, NULL, MAIN_TASK_PRIORITY, &task); 
+                MAIN_TASK_STACK_SIZE, NULL, MAIN_TASK_PRIORITY, &task);
     vTaskStartScheduler(); // This function should never return.
     return 0;
 }
