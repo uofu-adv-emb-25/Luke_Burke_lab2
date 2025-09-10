@@ -2,23 +2,22 @@
 
 ## Setup
 
-1. Attach the Pico to WSL:
-   # From Windows PowerShell (Admin) if using Ubunto
-   usbipd list
-   usbipd attach --wsl --busid 1-2
+1. Attach the Pico to WSL (From Windows PowerShell (Admin) if using Ubunto):
+   - usbipd list
+   - usbipd attach --wsl --busid 1-2
 
 2. Verify the device in Ubuntu:
-   lsusb
-   # should show Raspberry Pi Pico in boot mode
+   - lsusb (should show Raspberry Pi Pico in boot mode)
+   
 
-3. Build and flash the code:
-   rm -rf build \
-   cmake -S . -B build 
-   cmake --build build -j
-   find build -name "*.uf2"
-   # example: build/src/hello_freertos.uf2
-   sudo picotool load build/src/hello_freertos.uf2 -f
-   sudo picotool reboot
+3. Build and flash the code: 
+   - rm -rf build 
+   - cmake -S . -B build 
+   - cmake --build build -j
+   - find build -name "*.uf2"
+   (example: build/src/hello_freertos.uf2)
+   - sudo picotool load build/src/hello_freertos.uf2 -f
+   - sudo picotool reboot
 
 ## Exercise
 
@@ -38,13 +37,13 @@
   - Non-letters -> echoed back unchanged.  
 
 ### Example Session
----- Sent utf8 encoded message: "a" ----
-A
----- Sent utf8 encoded message: "z" ----
-Z
----- Sent utf8 encoded message: "ahah" ----
+---- Sent utf8 encoded message: "a" ----\
+A\
+---- Sent utf8 encoded message: "z" ----\
+Z\
+---- Sent utf8 encoded message: "ahah" ----\
 AHAH
----- Sent utf8 encoded message: "3" ----
-3
----- Sent utf8 encoded message: "!" ----
-!
+---- Sent utf8 encoded message: "3" ----\
+3\
+---- Sent utf8 encoded message: "!" ----\
+!\
