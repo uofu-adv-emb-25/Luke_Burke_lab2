@@ -13,7 +13,7 @@
 #include "pico/multicore.h"
 #include "pico/cyw43_arch.h"
 
-#include "something.h"
+#include "hello_freertos_functions.h"
 
 // Establish task priorities and stack sizes.
 #define MAIN_TASK_PRIORITY      ( tskIDLE_PRIORITY + 1UL )
@@ -31,7 +31,6 @@ void blink_task(__unused void *params) {
     hard_assert(cyw43_arch_init() == PICO_OK); // Initialize the WiFi chip, which also sets up the LED pin.
     while (true) {
         cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, on);
-        if (count++ % 11) on = !on;
         blink(&count, &on);
         vTaskDelay(500);
     }
