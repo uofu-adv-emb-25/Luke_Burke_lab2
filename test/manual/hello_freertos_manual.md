@@ -12,7 +12,7 @@
    # should show Raspberry Pi Pico in boot mode
 
 3. Build and flash the code:
-   rm -rf build
+   rm -rf build \
    cmake -S . -B build 
    cmake --build build -j
    find build -name "*.uf2"
