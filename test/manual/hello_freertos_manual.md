@@ -42,8 +42,8 @@ A\
 ---- Sent utf8 encoded message: "z" ----\
 Z\
 ---- Sent utf8 encoded message: "ahah" ----\
-AHAH
+AHAH\
 ---- Sent utf8 encoded message: "3" ----\
 3\
 ---- Sent utf8 encoded message: "!" ----\
-!\
+!
