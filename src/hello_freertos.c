@@ -13,9 +13,7 @@
 #include "pico/multicore.h"
 #include "pico/cyw43_arch.h"
 
-// Global variables used to keep track of LED state.
-int count = 0;
-bool on = false;
+#include "something.h"
 
 // Establish task priorities and stack sizes.
 #define MAIN_TASK_PRIORITY      ( tskIDLE_PRIORITY + 1UL )
@@ -28,10 +26,13 @@ bool on = false;
  * changes state every 11th time.
  */
 void blink_task(__unused void *params) {
+    int count = 0;
+    bool on = false;
     hard_assert(cyw43_arch_init() == PICO_OK); // Initialize the WiFi chip, which also sets up the LED pin.
     while (true) {
         cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, on); 
         if (count++ % 11) on = !on;
+        blink(&count, &on);
         vTaskDelay(500);
     }
 }
@@ -46,9 +47,7 @@ void main_task(__unused void *params) {
                 BLINK_TASK_STACK_SIZE, NULL, BLINK_TASK_PRIORITY, NULL);
     char c;
     while(c = getchar()) {
-        if (c <= 'z' && c >= 'a') putchar(c - 32);
-        else if (c >= 'A' && c <= 'Z') putchar(c + 32);
-        else putchar(c);
+        putchar(change_case(c));
     }
 }
 
