@@ -1,6 +1,7 @@
 # Luke & Burke Lab2
 
 This lab works illustrates code refactoring and serial debugging.
+
 ![Lab2 Workflow](https://github.com/uofu-adv-emb-25/luke_burke_lab2/actions/workflows/main.yml/badge.svg)
 
 
